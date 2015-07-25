@@ -6,25 +6,35 @@
 	<script>
 	function myFunction(x) {
 		var msg = "";
+		var lclass = "list-group-item list-group-item-";
+		var bg = "";
 		
 		switch(x){
 			case 0:
-				msg = "Eating"
+				msg = "Eating";
+				bg = "warning";
 				break;
 			case 1:
-				msg = "Dressing"
+				msg = "Dressing";
+				bg = "danger";
 				break;
 			case 2:
-				msg = "Bathing"
+				msg = "Bathing";
+				bg = "info";
 				break;
 			case 3:
-				msg = "Transporting"
+				msg = "Transporting";
+				bg = "success";
 				break;						
 		}
 		
 		var ul = document.getElementById("list");
 		var li = document.createElement("li");
-		li.setAttribute("class", "list-group-item");
+		var xout = document.createElement("span");
+		xout.setAttribute("class","badge");
+		xout.appendChild(document.createTextNode("x"));
+		li.appendChild(xout);
+		li.setAttribute("class", lclass.concat(bg));
 		li.appendChild(document.createTextNode(msg));
 		ul.appendChild(li);
 	}
@@ -32,31 +42,6 @@
 	
   </head>
   <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Care Crew</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
@@ -66,33 +51,12 @@
 	  </ul>
 	  
 	  <button onclick="myFunction(0)" class="btn btn-warning">Eating</button>
-	  <button onclick="myFunction(1)" class="btn btn-primary">Dressing</button>
+	  <button onclick="myFunction(1)" class="btn btn-danger">Dressing</button>
 	  <button onclick="myFunction(2)" class="btn btn-info">Bathing</button>
 	  <button onclick="myFunction(3)" class="btn btn-success">Transporting</button>
-	  
+	  	  
       </div>
     </div>
-
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2></h2>
-        </div>
-        <div class="col-md-4">
-          <h2></h2>
-       </div>
-        <div class="col-md-4">
-          <h2></h2>
-        </div>
-      </div>
-
-      <hr>
-
-      <footer>
-        <p>© Company 2014</p>
-      </footer>
-    </div> <!-- /container -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
