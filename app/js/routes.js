@@ -9,20 +9,22 @@ module.exports = function(app) {
 
   app.post('/caregiver', function (req, res) {
 
-    var lastName = req.body.lastName,
-        firstName = req.body.firstName;
+    var name = req.body.name;
 
-    var caregiver =  new CareGiver(firstName, lastName);
+    var caregiver =  new CareGiver.model({
+      name: name
+    });
 
-    db.instance.collection('caregiver').insert(
-      caregiver,
-      function (err, result) {
-        if (!err){
-          res.send(result);
-        } else {
-          res.status(500).send(JSON.stringify(err));
-        }
+    caregiver.save(function (err, result) {
+      if (!err){
+        res.send(result);
+      } else {
+        res.status(500).send(JSON.stringify(err));
       }
-    );
+    });
   });
-}
+
+  app.get('/task', function(req, res) {
+    res.render('task.ejs');
+  });
+};
