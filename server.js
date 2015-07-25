@@ -7,8 +7,12 @@ var db = require('./db.js');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// models
+app.use('/models',express.static(__dirname+'models'));
+var patient = require('./app/js/models/Patient.js');
+
 // Routes
-require('./app/js/routes.js')(app);
+require('./app/js/routes.js')(app, patient);
 
 app.listen(8888);
 

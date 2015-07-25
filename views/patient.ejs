@@ -34,9 +34,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Demo</h1>
-        <p><a class="btn btn-primary btn-lg" href="/task" role="button">Create Task (task.ejs)</a></p>
-        <p><a class="btn btn-primary btn-lg" href="/patient" role="button">Patient Profile (patient.ejs)</a></p>
+        <h1>Profile for <%= patient.name %></h1>
       </div>
     </div>
 
@@ -44,9 +42,9 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2>About</h2>
-          <p>Caregiver delegation of ADLs (activities of daily living) </p>
-          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          <h2>Contact</h2>
+          <a class="btn" data-toggle="collapse" data-target="#phone">Phone number &raquo;</a>
+          <p class="collapse" id="phone"><%=patient.phone%></p>
         </div>
       </div>
 
