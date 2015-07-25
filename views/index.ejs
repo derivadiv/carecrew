@@ -2,39 +2,10 @@
   <% include partials/head %>
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Care Crew</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
         <h1>Demo</h1>
-
-        <br />
-
-        <p><a class="btn btn-primary btn-lg" href="/task" role="button">Create Task</a></p>
 
         <p>
           <select data-bind="options: patients,
@@ -45,7 +16,10 @@
                        optionsCaption: '👥 Select Patient'"></select>
         </p>
 
-        <!--p><a class="btn btn-primary btn-lg" href="/patient" role="button" data-bind="attr: { href: patientUrl}">Patient Profile</a></p-->
+        <p><a class="btn btn-primary btn-lg" href="/task" role="button">Create Task</a></p>
+
+
+        <p><a class="btn btn-primary btn-lg" href="/caregiver" role="button">"Log In" (Default Caregiver)</a></p>
 
       </div>
     </div>
@@ -63,9 +37,12 @@
     </div> <!-- /container -->
 <% include partials/footer %>
 <!-- page specific -->
+<<<<<<< HEAD
 <script src="../js/view-models/caregiver-view-model.js" type="application/javascript"></script>
 <script type="application/javascript">
   var viewModel = new CaregiverModelView('55b3f3e4ad7306c81efe729a');
 </script>
+=======
+>>>>>>> de97d57498a14e36aadf7060c102a315b4ce625c
 </body>
 </html>

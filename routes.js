@@ -24,6 +24,20 @@ module.exports = function(app, patient) {
 		});
 	});
 
+
+	app.get('/caregiver', function(req, res) {
+		CareGiver.model.findOne({'name': "Andy"}, {}, function(err, cg){
+			if ((! err) && cg !== "null"){
+				res.render('caregiver', {
+					caregiver: cg
+				});
+			}
+			else {
+				console.log(err);
+			}
+		});
+	});
+
 	app.get('/task', function(req, res) {
 		res.render('task');
 	});
@@ -45,6 +59,7 @@ module.exports = function(app, patient) {
 					patient: patient
 				});
 			});
+
 		}
 	});
 

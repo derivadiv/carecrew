@@ -1,0 +1,29 @@
+<html>
+  <% include partials/head %>
+ <body>
+
+
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Caregiver <%= caregiver.name %></h1>
+
+          <select class="form-control" data-bind="options: patients,
+                 optionsText: 'name',
+                 value: _id,
+                 optionsCaption: ' 👤Select Patient'"></select>
+        <br />
+
+        <p><a class="btn btn-primary btn-lg" href="/patient?" role="button">Add Patient</a></p>
+      </div>
+    </div>
+
+<% include partials/footer %>
+<script src="../js/view-models/index-view-model.js" type="application/javascript"></script>
+<script type="application/javascript">
+  var viewModel = new IndexViewModel('55b3f3e4ad7306c81efe729a');
+</script>
+
+</body>
+</html>
