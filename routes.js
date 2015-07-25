@@ -42,7 +42,6 @@ module.exports = function(app, patient) {
 		res.render('task');
 	});
 
-<<<<<<< HEAD
 	app.get('/patient/:id', function(req, res) {
 		var pid = req.params.id;
 		Patient.model.findOne({'_id': pid}, {}, function(err, pat){
@@ -55,7 +54,7 @@ module.exports = function(app, patient) {
 				console.log(err);
 			}
 		});
-=======
+
 	app.get('/patient', function(req, res) {
 		if (req.patient){
 			res.render('patient', {
@@ -75,7 +74,6 @@ module.exports = function(app, patient) {
 			});
 
 		}
->>>>>>> 998ce06b1eb0ced15121df81251cb929d7298fee
 	});
 
 	//try http://localhost:8888/patients/all?id=55b3d8e7f6f6b6183fdcd54b
