@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var patientSchema = mongoose.Schema({
     name: String, 
     phone: String,
+    email: String,
     //demographics
     birthday: Date,//convert on frontend to age?
     sex: String,

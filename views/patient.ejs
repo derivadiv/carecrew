@@ -42,10 +42,39 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
+         
+          <h2>Medical information</h2>
+          <a class="btn" data-toggle="collapse" data-target="#allergies">Allergies &raquo;</a>
+          <p class="collapse" id="allergies"><%=patient.allergies ? patient.allergies : 'Unknown :('%></p>
+
+          <a class="btn" data-toggle="collapse" data-target="#notes">Notes &raquo;</a>
+          <p class="collapse" id="notes"><%=patient.notes ? patient.notes : 'Unknown :('%></p>
+
+
+          <h2>Bio</h2>
+
+          <a class="btn" data-toggle="collapse" data-target="#birthday">Birthday &raquo;</a>
+          <p class="collapse" id="birthday"><%=patient.birthday ? patient.birthday : 'Unknown :('%></p>
+
+          <a class="btn" data-toggle="collapse" data-target="#gender">Gender &raquo;</a>
+          <p class="collapse" id="gender"><%=patient.gender ? patient.gender : 'Unknown :('%></p>
+
           <h2>Contact</h2>
+
           <a class="btn" data-toggle="collapse" data-target="#phone">Phone number &raquo;</a>
-          <p class="collapse" id="phone"><%=patient.phone%></p>
+          <p class="collapse" id="phone"><%=patient.phone ? patient.phone : 'Unknown :('%></p>
+
+          <a class="btn" data-toggle="collapse" data-target="#email">Email &raquo;</a>
+          <p class="collapse" id="email"><%=patient.email ? patient.email : 'Unknown :('%></p>
+
         </div>
+
+        <div class="col-md-4">
+          <!-- TODO display list of names (not stored ids) and add new ones-->
+          <h2> Caregivers </h2>
+          <h2> Tasks </h2>
+        </div>
+
       </div>
 
       <hr>
