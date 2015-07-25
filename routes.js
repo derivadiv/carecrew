@@ -36,20 +36,14 @@ module.exports = function(app, patient) {
 		} else {
 			//for demo purposes, create patient?
 
-			var andy = new patient.model({
-			    name: "Andy",
-			    phone: "999-999-9999",
-    			sex: "M",
-    			gender: "M",
-			    // important patient-related info
-			    allergies: "none", 
-			    notes: "issues",
-			    caregivers: [],
-			    tasks: []
-			});
-			andy.save();
-			res.render('patient', {
-				patient: andy
+			var id = req.query.id;
+
+			var objId = mongoose.Types.ObjectId(id);
+
+			Patient.model.findOne({_id: objId}, function (err, patient) {
+				res.render('patient', {
+					patient: patient
+				});
 			});
 		}
 	});

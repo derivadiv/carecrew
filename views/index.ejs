@@ -31,15 +31,21 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Demo</h1>
-        <select data-bind="options: patients,
-                       optionsText: 'name',
-                       value: _id,
-                       optionsCaption: ' 👤Select Patient'"></select>
 
         <br />
 
         <p><a class="btn btn-primary btn-lg" href="/task" role="button">Create Task</a></p>
-        <p><a class="btn btn-primary btn-lg" href="/patient" role="button">Patient Profile</a></p>
+
+        <p>
+          <select data-bind="options: patients,
+                       optionsText: function (e) {
+                         return ' 👤' + e.name
+                       },
+                       value: selectedPatient,
+                       optionsCaption: '👥 Select Patient'"></select>
+        </p>
+
+        <!--p><a class="btn btn-primary btn-lg" href="/patient" role="button" data-bind="attr: { href: patientUrl}">Patient Profile</a></p-->
 
       </div>
     </div>
@@ -57,9 +63,9 @@
     </div> <!-- /container -->
 <% include partials/footer %>
 <!-- page specific -->
-<script src="../js/view-models/index-view-model.js" type="application/javascript"></script>
+<script src="../js/view-models/caregiver-view-model.js" type="application/javascript"></script>
 <script type="application/javascript">
-  var viewModel = new IndexViewModel('55b3f3e4ad7306c81efe729a');
+  var viewModel = new CaregiverModelView('55b3f3e4ad7306c81efe729a');
 </script>
 </body>
 </html>

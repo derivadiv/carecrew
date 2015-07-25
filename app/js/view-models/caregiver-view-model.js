@@ -1,8 +1,14 @@
-function IndexViewModel (id) {
+function CaregiverModelView (id) {
 
   var self = this;
 
   self.patients = ko.observableArray([]);
+
+  self.selectedPatient = ko.observable();
+
+  self.selectedPatient.subscribe(function () {
+    window.location.href = '/patient?id=' + self.selectedPatient()._id;
+  });
 
   self.initialize = function () {
 
@@ -14,7 +20,6 @@ function IndexViewModel (id) {
           switch (status) {
             case 'success':
               var response = JSON.parse(xhr.responseText);
-
               self.patients(response);
               break;
             default:
