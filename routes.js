@@ -1,5 +1,4 @@
-var CareGiver = require('./models/CareGiver.js'),
-db = require('../../db.js');
+var CareGiver = require('./app/js/models/CareGiver.js');
 module.exports = function(app, patient) {
 	app.get('/', function(req, res) {
 		res.render('index');
