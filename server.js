@@ -3,8 +3,13 @@ var app = express();
 var path = require("path");
 var db = require('./db.js');
 
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
-});
+// Views setup: ejs template
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// Routes
+require('./app/js/routes.js')(app);
 
 app.listen(8888);
+
+module.exports = app;
