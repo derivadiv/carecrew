@@ -10,7 +10,7 @@
         <h1>Caregiver <%= caregiver.name %></h1>
 
         <p>
-          <select class="form-control" data-bind="options: patients,
+          <select data-bind="options: patients,
                        optionsText: function (e) {
                          return ' 👤' + e.name
                        },
