@@ -2,54 +2,6 @@
   <head>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" type="../css/style.css">
-
-	<script>
-	function myFunction(x) {
-		// Choose the correct action
-		var msg = "";
-		var lclass = "list-group-item list-group-item-";
-		var bg = "";
-		
-		switch(x){
-			case 0:
-				msg = "Eating";
-				bg = "warning";
-				break;
-			case 1:
-				msg = "Dressing";
-				bg = "danger";
-				break;
-			case 2:
-				msg = "Bathing";
-				bg = "info";
-				break;
-			case 3:
-				msg = "Transporting";
-				bg = "success";
-				break;						
-		}
-		
-		var ul = document.getElementById("list");
-		var li = document.createElement("li");
-		var xout = document.createElement("span");		
-		// Create the close button
-		xout.setAttribute("class","badge");
-		xout.appendChild(document.createTextNode("x"));
-		// Pass the parent instead since it's relative to the badge element
-		xout.onclick = function() { deleteThis(xout.parentNode); };
-		// Add new list item
-		li.appendChild(xout);
-		li.setAttribute("class", lclass.concat(bg));
-		li.appendChild(document.createTextNode(msg));
-		ul.appendChild(li);
-	}
-	
-	// Remove tasks
-	function deleteThis(x) {
-		var ul = document.getElementById("list");
-		ul.removeChild(x);
-	}
-	</script>
 	
   </head>
   <body>
@@ -61,18 +13,99 @@
 	  <ul class="list-group" id="list">
 	  </ul>
 	  
-	  <button onclick="myFunction(0)" class="btn btn-warning">Eating</button>
-	  <button onclick="myFunction(1)" class="btn btn-danger">Dressing</button>
-	  <button onclick="myFunction(2)" class="btn btn-info">Bathing</button>
-	  <button onclick="myFunction(3)" class="btn btn-success">Transporting</button>
-	  	  
+	  <button data-toggle="modal" id="0" data-target="#edit-modal" class="btn btn-warning">Eating</button>
+	  <button data-toggle="modal" id="1" data-target="#edit-modal" class="btn btn-danger">Dressing</button>
+	  <button data-toggle="modal" id="2" data-target="#edit-modal" class="btn btn-info">Bathing</button>
+	  <button data-toggle="modal" id="3" data-target="#edit-modal" class="btn btn-success">Transporting</button>
+
+    <div id="edit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+				<form id="myForm" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div id="tasktype" class="modal-body edit-content">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="tasksubmit" type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                </div>
+				</form>
+            </div>
+        </div>
+    </div>	
       </div>
     </div>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
-
+	<script>
+		function addTask(x) {
+			console.log(x);
+			// Choose the correct action
+			var msg = "";
+			var lclass = "list-group-item list-group-item-";
+			var bg = "";
+			
+			// Convert the number into a integer format from a string format
+			switch(parseInt(x)){
+				case 0:
+					msg = "Eating";
+					bg = "warning";
+					break;
+				case 1:
+					msg = "Dressing";
+					bg = "danger";
+					break;
+				case 2:
+					msg = "Bathing";
+					bg = "info";
+					break;
+				case 3:
+					msg = "Transporting";
+					bg = "success";
+					break;						
+			}
+			
+			var ul = document.getElementById("list");
+			var li = document.createElement("li");
+			var xout = document.createElement("span");		
+			// Create the close button
+			xout.setAttribute("class","badge");
+			xout.appendChild(document.createTextNode("x"));
+			// Pass the parent instead since it's relative to the badge element
+			xout.onclick = function() { deleteTask(xout.parentNode); };
+			// Add new list item
+			li.appendChild(xout);
+			li.setAttribute("class", lclass.concat(bg));
+			li.appendChild(document.createTextNode(msg));
+			ul.appendChild(li);
+		}
+		
+		// Remove tasks
+		function deleteTask(x) {
+			var ul = document.getElementById("list");
+			ul.removeChild(x);
+		}
+	
+		// Create a popup to fill in the task
+        $('#edit-modal').on('show.bs.modal', function(e) {            
+            var $modal = $(this),
+                esseyId = e.relatedTarget.id;
+			$modal.find('.edit-content').html(esseyId);
+		});
+	
+		// Submit the info
+		$('#tasksubmit').click(function(e){
+			addTask($('#tasktype').html());
+		});
+    </script>
+	
 </body>
   </body>
 </html>
