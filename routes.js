@@ -54,6 +54,7 @@ module.exports = function(app, patient) {
 				console.log(err);
 			}
 		});
+	});
 
 	app.get('/patient', function(req, res) {
 		if (req.patient){

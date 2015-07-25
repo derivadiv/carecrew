@@ -9,11 +9,14 @@
       <div class="container">
         <h1>Caregiver <%= caregiver.name %></h1>
 
+        <p>
           <select class="form-control" data-bind="options: patients,
-                 optionsText: 'name',
-                 value: _id,
-                 optionsCaption: ' 👤Select Patient'"></select>
-        <br />
+                       optionsText: function (e) {
+                         return ' 👤' + e.name
+                       },
+                       value: selectedPatient,
+                       optionsCaption: '👥 Select Patient'"></select>
+        </p>
 
         <p>
           <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#patModal"> Add New Patient </button>
