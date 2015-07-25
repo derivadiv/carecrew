@@ -1,6 +1,4 @@
 var mongoose = require('mongoose');
-var taskSchema = require('./Task.js').schema;
-var caregiverSchema = require('./CareGiver.js').schema;
 
 var patientSchema = mongoose.Schema({
     name: String, 
@@ -13,9 +11,14 @@ var patientSchema = mongoose.Schema({
     // important patient-related info
     allergies: String, 
     notes: String,
-    // how to link different schemas between these models, TODO
-    caregivers: [caregiverSchema],
-    tasks: [taskSchema],
+    caregivers: [{ // caregiver model?
+       type: mongoose.Schema.Types.ObjectId, 
+       ref: 'CareGiver'
+    }],
+    tasks: [{ // task model
+       type: mongoose.Schema.Types.ObjectId, 
+       ref: 'Task'
+    }],
     dateAdded: {type: Date, default: Date.now} //not important yet
 });
 
