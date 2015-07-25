@@ -42,12 +42,18 @@ module.exports = function(app, patient) {
 		res.render('task');
 	});
 
-	app.get('/patient', function(req, res) {
-		if (req.patient){
-			res.render('patient', {
-				patient: req.patient
-			});
-		}
+	app.get('/patient/:id', function(req, res) {
+		var pid = req.params.id;
+		Patient.model.findOne({'_id': pid}, {}, function(err, pat){
+			if ((! err) && pat !== "null"){
+				res.render('patient', {
+					patient: pat // but also need to get current caregiver as logged-in user
+				});
+			}
+			else {
+				console.log(err);
+			}
+		});
 	});
 
 	//try http://localhost:8888/patients/all?id=55b3d8e7f6f6b6183fdcd54b

@@ -15,9 +15,26 @@
                  optionsCaption: ' 👤Select Patient'"></select>
         <br />
 
-        <p><a class="btn btn-primary btn-lg" href="/patient?" role="button">Add Patient</a></p>
+        <p>
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#patModal"> Add New Patient </button>
+        </p>
+
       </div>
     </div>
+
+<div class="modal fade" id="patModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add New Patient</h4>
+      </div>
+      <div class="modal-body">
+        <% include partials/newpat %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <% include partials/footer %>
 <script src="../js/view-models/index-view-model.js" type="application/javascript"></script>
