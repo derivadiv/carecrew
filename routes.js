@@ -1,5 +1,6 @@
 var CareGiver = require('./app/js/models/CareGiver.js'),
 		Patient = require('./app/js/models/Patient.js'),
+	  Task = require('./app/js/models/Task.js'),
 		mongoose = require('mongoose');
 
 module.exports = function(app, patient) {
@@ -52,6 +53,34 @@ module.exports = function(app, patient) {
 			}
 			else {
 				console.log(err);
+			}
+		});
+	});
+
+	app.post('/task', function (req, res) {
+		var payload = req.body.payload;
+
+		var task = new Task.model(payload);
+
+		task.save(function (err, result) {
+			if (!err){
+				res.send(result);
+			} else {
+				res.status(500).send(JSON.stringify(err));
+			}
+		});
+	});
+
+
+	//gets all tasks assigned to the caregiver
+	app.get('/tasks', function () {
+		var caregiver_id = req.query.caregiver_id;
+
+		Task.model.find({caregiver: mongoose.Types.ObjectId(caregiver_id)}, function (err, task) {
+			if (!err){
+				res.send(task);
+			} else {
+				res.status(500).send(JSON.stringify(err));
 			}
 		});
 	});

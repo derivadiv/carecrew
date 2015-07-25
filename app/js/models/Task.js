@@ -8,6 +8,7 @@ var taskSchema = mongoose.Schema({
     dateStart: {type: Date, default: Date.now},
     dateEnd: Date, // TODO replace with duration but what data type/ units?
     notes: String,
+    status: String, // ['uassigned', 'inprogress', 'completed']
     caregiver: { // caregiver must sign up to be assigned to a task
        type: mongoose.Schema.Types.ObjectId, 
        ref: 'CareGiver'
