@@ -9,7 +9,7 @@
       <div class="container">
         <h1>Caregiver <%= caregiver.name %></h1>
 
-          <select data-bind="options: patients,
+          <select class="form-control" data-bind="options: patients,
                  optionsText: 'name',
                  value: _id,
                  optionsCaption: ' 👤Select Patient'"></select>
@@ -19,28 +19,6 @@
       </div>
     </div>
 
-<!--    <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      Your patients
-      <span class="caret"></span>
-    </button>
-    <ul class="patients" aria-labelledby="dropdownMenu1">
-      <% for (var pid in caregiver.patients) { 
-          Patient.model.findOne({'_id': pid}, {}, function(err, pat){
-            if ((! err) && pat !== "null"){%>
-              <li><a href="#"><%= pat.name%></a></li>
-            <%}
-            else {
-              console.log(err);
-            }
-          });
-        %>
-
-      <%}%>
-    </ul>
-  </div> -->
-     
-    </div> 
 <% include partials/footer %>
 <script src="../js/view-models/index-view-model.js" type="application/javascript"></script>
 <script type="application/javascript">
