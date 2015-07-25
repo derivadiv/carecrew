@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/dppillai93/carecrew/issues"
   },
-  "homepage": "https://github.com/dppillai93/carecrew"
+  "homepage": "https://github.com/dppillai93/carecrew",
+  "dependencies": {
+    "express": "^4.13.1"
+  }
 }

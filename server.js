@@ -1,7 +1,9 @@
-var http = require("http");
+var express = require('express');
+var app = express();
+var path = require("path");
 
-http.createServer(function(request, response) {
-  response.writeHead(200, {"Content-Type": "text/plain"});
-  response.write("Hello World");
-  response.end();
-}).listen(8888);
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
+
+app.listen(8888);
