@@ -69,9 +69,17 @@ module.exports = function(app, patient) {
 			var objId = mongoose.Types.ObjectId(id);
 
 			Patient.model.findOne({_id: objId}, function (err, patient) {
-				res.render('patient', {
-					patient: patient
-				});
+
+				if (!err) {
+
+					CareGiver.model.find({_id: {$in: patient.caregivers}}, function (err, caregivers) {
+						res.render('patient', {
+							patient: patient,
+							caregivers: caregivers
+						});
+					});
+				}
+
 			});
 
 		}
