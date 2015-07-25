@@ -22,6 +22,20 @@ module.exports = function(app, patient) {
 		});
 	});
 
+
+	app.get('/caregiver', function(req, res) {
+		CareGiver.model.findOne({'name': "Andy"}, {}, function(err, cg){
+			if ((! err) && cg !== "null"){
+				res.render('caregiver', {
+					caregiver: cg
+				});
+			}
+			else {
+				console.log(err);
+			}
+		});
+	});
+
 	app.get('/task', function(req, res) {
 		res.render('task');
 	});
@@ -31,25 +45,9 @@ module.exports = function(app, patient) {
 			res.render('patient', {
 				patient: req.patient
 			});
-		} else {
-			//for demo purposes, create patient?
-
-			var andy = new patient.model({
-			    name: "Andy",
-			    phone: "999-999-9999",
-    			sex: "M",
-    			gender: "M",
-			    // important patient-related info
-			    allergies: "none", 
-			    notes: "issues",
-			    caregivers: [],
-			    tasks: []
-			});
-			andy.save();
-			res.render('patient', {
-				patient: andy
-			});
 		}
 	});
+
+
 
 }
