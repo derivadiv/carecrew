@@ -6,6 +6,19 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Demo</h1>
+
+        <p>
+          <select data-bind="options: patients,
+                       optionsText: function (e) {
+                         return ' 👤' + e.name
+                       },
+                       value: selectedPatient,
+                       optionsCaption: '👥 Select Patient'"></select>
+        </p>
+
+        <p><a class="btn btn-primary btn-lg" href="/task" role="button">Create Task</a></p>
+
+
         <p><a class="btn btn-primary btn-lg" href="/caregiver" role="button">"Log In" (Default Caregiver)</a></p>
 
       </div>
@@ -24,5 +37,12 @@
     </div> <!-- /container -->
 <% include partials/footer %>
 <!-- page specific -->
+<<<<<<< HEAD
+<script src="../js/view-models/caregiver-view-model.js" type="application/javascript"></script>
+<script type="application/javascript">
+  var viewModel = new CaregiverModelView('55b3f3e4ad7306c81efe729a');
+</script>
+=======
+>>>>>>> de97d57498a14e36aadf7060c102a315b4ce625c
 </body>
 </html>
