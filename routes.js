@@ -26,6 +26,25 @@ module.exports = function(app, patient) {
 	});
 
 
+	app.post('/patient', function (req, res) {
+
+		var params = req.body;
+
+		params.caregivers = [
+			'55b3f3e4ad7306c81efe729a'
+		];
+
+		var caregiver =  new Patient.model(params);
+
+		caregiver.save(function (err, result) {
+			if (!err){
+				res.send(result);
+			} else {
+				res.status(500).send(JSON.stringify(err));
+			}
+		});
+	});
+
 	app.get('/caregiver', function(req, res) {
 		CareGiver.model.findOne({'name': "Andy"}, {}, function(err, cg){
 			if ((! err) && cg !== "null"){
@@ -100,6 +119,8 @@ module.exports = function(app, patient) {
 			Patient.model.findOne({_id: objId}, function (err, patient) {
 
 				if (!err) {
+
+					console.log(patient.caregivers[0].toString());
 
 					CareGiver.model.find({_id: {$in: patient.caregivers}}, function (err, caregivers) {
 						res.render('patient', {
