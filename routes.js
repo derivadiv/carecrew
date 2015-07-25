@@ -1,5 +1,7 @@
-var CareGiver = require('./models/CareGiver.js'),
-db = require('../../db.js');
+var CareGiver = require('./app/js/models/CareGiver.js'),
+		Patient = require('./app/js/models/Patient.js'),
+		mongoose = require('mongoose');
+
 module.exports = function(app, patient) {
 	app.get('/', function(req, res) {
 		res.render('index');
@@ -48,6 +50,19 @@ module.exports = function(app, patient) {
 		}
 	});
 
+	//try http://localhost:8888/patients/all?id=55b3d8e7f6f6b6183fdcd54b
+	app.get('/patients/all', function (req, res) {
+		var id = req.param('id');
 
+		var objId = mongoose.Types.ObjectId(id);
+
+		Patient.model.find({caregivers: objId}, function (err, results) {
+			if (!err) {
+				res.send(results);
+			} else {
+				res.status(500).send(err);
+			}
+		});
+	});
 
 }
