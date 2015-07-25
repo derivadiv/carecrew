@@ -17,7 +17,12 @@
   },
   "homepage": "https://github.com/dppillai93/carecrew",
   "dependencies": {
+<<<<<<< HEAD
     "ejs": "^2.3.3",
     "express": "^4.13.1"
+=======
+    "express": "^4.13.1",
+    "mongodb": "^2.0.39"
+>>>>>>> 5999d2323a02f61ca8aa6d92712e819e07d9adf9
   }
 }
