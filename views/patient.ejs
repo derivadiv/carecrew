@@ -37,37 +37,69 @@
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
          
           <h2>Medical information</h2>
-          <a class="btn" data-toggle="collapse" data-target="#allergies">Allergies &raquo;</a>
-          <p class="collapse" id="allergies"><%=patient.allergies ? patient.allergies : 'Unknown :('%></p>
 
-          <a class="btn" data-toggle="collapse" data-target="#notes">Notes &raquo;</a>
-          <p class="collapse" id="notes"><%=patient.notes ? patient.notes : 'Unknown :('%></p>
+          <div class="caregivers-list">
+            <div>
+              <span class="profile-info-title" data-target="#allergies">Allergies: </span>
+              <span id="allergies"><%=patient.allergies ? patient.allergies : 'Unknown :('%></span>
+            </div>
+            <div>
+              <span class="profile-info-title" data-target="#notes">Notes: </span>
+              <span id="notes"><%=patient.notes ? patient.notes : 'Unknown :('%></span>
+            </div>
+          </div>
 
 
           <h2>Bio</h2>
 
-          <a class="btn" data-toggle="collapse" data-target="#birthday">Birthday &raquo;</a>
-          <p class="collapse" id="birthday"><%=patient.birthday ? patient.birthday : 'Unknown :('%></p>
 
-          <a class="btn" data-toggle="collapse" data-target="#gender">Gender &raquo;</a>
-          <p class="collapse" id="gender"><%=patient.gender ? patient.gender : 'Unknown :('%></p>
+          <div class="caregivers-list">
+            <div>
+              <span class="profile-info-title" data-target="#birthday">Birthday: </span>
+              <span id="birthday"><%=patient.birthday ? patient.birthday : 'Unknown :('%></span>
+            </div>
+
+            <div>
+              <span class="profile-info-title" data-target="#gender">Gender: </span>
+              <span id="gender"><%=patient.gender ? patient.gender : 'Unknown :('%></span>
+            </div>
+          </div>
 
           <h2>Contact</h2>
 
-          <a class="btn" data-toggle="collapse" data-target="#phone">Phone number &raquo;</a>
-          <p class="collapse" id="phone"><%=patient.phone ? patient.phone : 'Unknown :('%></p>
+          <div class="caregivers-list">
+            <div>
+              <span class="profile-info-title" data-target="#phone">Phone number: </span>
+              <span id="phone"><%=patient.phone ? patient.phone : 'Unknown :('%></span>
+            </div>
 
-          <a class="btn" data-toggle="collapse" data-target="#email">Email &raquo;</a>
-          <p class="collapse" id="email"><%=patient.email ? patient.email : 'Unknown :('%></p>
+
+            <div>
+              <span class="profile-info-title" data-target="#email">Email: </span>
+              <span id="email"><%=patient.email ? patient.email : 'Unknown :('%></span>
+            </div>
+          </div>
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-6">
           <!-- TODO display list of names (not stored ids) and add new ones-->
           <h2> Caregivers </h2>
+
+          <div class="caregivers-list">
+            <% for(var i=0; i < caregivers.length; i++) {%>
+            <p><strong><%= caregivers[i].name %></strong></p>
+            <li><%= caregivers[i].phone %></li>
+            <li><%= caregivers[i].notes %></li>
+            <li><i><%= caregivers[i].freetime %></i></li>
+            <br/>
+            <% } %>
+          </div>
+
+
           <h2> Tasks </h2>
           <% include task %>
         </div>
