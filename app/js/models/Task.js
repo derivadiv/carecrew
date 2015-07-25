@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var caregiverSchema = require('./CareGiver.js').schema;
 
 var taskSchema = mongoose.Schema({
     title: String, //required, short text
