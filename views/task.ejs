@@ -5,6 +5,7 @@
 
 	<script>
 	function myFunction(x) {
+		// Choose the correct action
 		var msg = "";
 		var lclass = "list-group-item list-group-item-";
 		var bg = "";
@@ -30,13 +31,23 @@
 		
 		var ul = document.getElementById("list");
 		var li = document.createElement("li");
-		var xout = document.createElement("span");
+		var xout = document.createElement("span");		
+		// Create the close button
 		xout.setAttribute("class","badge");
 		xout.appendChild(document.createTextNode("x"));
+		// Pass the parent instead since it's relative to the badge element
+		xout.onclick = function() { deleteThis(xout.parentNode); };
+		// Add new list item
 		li.appendChild(xout);
 		li.setAttribute("class", lclass.concat(bg));
 		li.appendChild(document.createTextNode(msg));
 		ul.appendChild(li);
+	}
+	
+	// Remove tasks
+	function deleteThis(x) {
+		var ul = document.getElementById("list");
+		ul.removeChild(x);
 	}
 	</script>
 	
