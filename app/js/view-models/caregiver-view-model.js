@@ -28,6 +28,37 @@ function CaregiverModelView (id) {
         }
       }
     );
+  };
+
+  self.addNewPatient = function () {
+
+    var name = $('#addpat-name').val();
+    var phone = $('#addpat-phone').val();
+    var birthday = $('#addpat-birthday').val();
+    var gender = $('#addpat-gender').val();
+    var allergies = $('#addpat-allergies').val();
+
+    var data = {
+      name: name,
+      phone: phone,
+      birthday: birthday,
+      gender: gender,
+      allergies: allergies
+    };
+
+    $.ajax(
+      'http://localhost:8888/patient',
+      {
+        method: 'POST',
+        data: data,
+        complete: function (xhr, status) {
+          console.log(status);
+
+        }
+      }
+    );
+
+
   }
 
   self.initialize();

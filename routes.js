@@ -1,5 +1,6 @@
 var CareGiver = require('./app/js/models/CareGiver.js'),
 		Patient = require('./app/js/models/Patient.js'),
+	  Task = require('./app/js/models/Task.js'),
 		mongoose = require('mongoose');
 
 module.exports = function(app, patient) {
@@ -24,6 +25,25 @@ module.exports = function(app, patient) {
 		});
 	});
 
+
+	app.post('/patient', function (req, res) {
+
+		var params = req.body;
+
+		params.caregivers = [
+			'55b3f3e4ad7306c81efe729a'
+		];
+
+		var caregiver =  new Patient.model(params);
+
+		caregiver.save(function (err, result) {
+			if (!err){
+				res.send(result);
+			} else {
+				res.status(500).send(JSON.stringify(err));
+			}
+		});
+	});
 
 	app.get('/caregiver', function(req, res) {
 		CareGiver.model.findOne({'name': "Andy"}, {}, function(err, cg){
@@ -56,6 +76,34 @@ module.exports = function(app, patient) {
 		});
 	});
 
+	app.post('/task', function (req, res) {
+		var payload = req.body.payload;
+
+		var task = new Task.model(payload);
+
+		task.save(function (err, result) {
+			if (!err){
+				res.send(result);
+			} else {
+				res.status(500).send(JSON.stringify(err));
+			}
+		});
+	});
+
+
+	//gets all tasks assigned to the caregiver
+	app.get('/tasks', function () {
+		var caregiver_id = req.query.caregiver_id;
+
+		Task.model.find({caregiver: mongoose.Types.ObjectId(caregiver_id)}, function (err, task) {
+			if (!err){
+				res.send(task);
+			} else {
+				res.status(500).send(JSON.stringify(err));
+			}
+		});
+	});
+
 	app.get('/patient', function(req, res) {
 		if (req.patient){
 			res.render('patient', {
@@ -71,6 +119,8 @@ module.exports = function(app, patient) {
 			Patient.model.findOne({_id: objId}, function (err, patient) {
 
 				if (!err) {
+
+					console.log(patient.caregivers[0].toString());
 
 					CareGiver.model.find({_id: {$in: patient.caregivers}}, function (err, caregivers) {
 						res.render('patient', {

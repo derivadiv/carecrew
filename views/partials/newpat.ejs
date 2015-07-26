@@ -2,31 +2,31 @@
 <form>
 	<div class = "form-group">
 		<label for="name">Name</label>
-		<input type="text" class="form-control" id="name" placeholder="Full Name"/>
+		<input type="text" class="form-control" id="addpat-name" placeholder="Full Name"/>
 	</div>
 	<div class = "form-group">
 		<label for="phone">Phone Number</label>
-		<input type="text" class="form-control" id="phone" placeholder="555-555-5555"/>
+		<input type="text" class="form-control" id="addpat-phone" placeholder="555-555-5555"/>
 	</div>
 	<div class = "form-group">
 		<label for="birthday">Birthday</label>
-		<input type="text" class="form-control" id="birthday" placeholder="MM/DD/YYYY"/>
+		<input type="text" class="form-control" id="addpat-birthday" placeholder="MM/DD/YYYY"/>
 	</div>
 	<div class = "form-group">
 		<label for="gender">Gender</label>
-		<input type="text" class="form-control" id="gender" placeholder=""/>
+		<input type="text" class="form-control" id="addpat-gender" placeholder=""/>
 	</div>
 	<div class = "form-group">
 		<label for="allergies">Allergies/ dietary restrictions</label>
-		<input type="text" class="form-control" id="allergies" placeholder=""/>
+		<input type="text" class="form-control" id="addpat-allergies" placeholder=""/>
 	</div>
 	<div class = "form-group">
 		<label for="notes">Notes</label>
-		<input type="text" class="form-control" id="notes" placeholder=""/>
+		<input type="text" class="form-control" id="addpat-notes" placeholder=""/>
 	</div>
 	<div class="modal-footer">
 		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		<button type="submit" class="btn btn-default">Save Patient</button>
+		<button type="submit" class="btn btn-default" data-bind="click:addNewPatient">Save Patient</button>
 	</div>
 </form>
 </html>
