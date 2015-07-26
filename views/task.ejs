@@ -62,7 +62,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
     <script>
-        function addTask(x) {
+        function addTask(x, m, t) {
             console.log(x);
             // Choose the correct action
             var msg = "";
@@ -72,19 +72,19 @@
             // Convert the number into a integer format from a string format
             switch (parseInt(x)) {
                 case 0:
-                    msg = "Eating";
+                    msg = "Eating: " + m;
                     bg = "warning";
                     break;
                 case 1:
-                    msg = "Dressing";
+                    msg = "Dressing: " + m ;
                     bg = "danger";
                     break;
                 case 2:
-                    msg = "Bathing";
+                    msg = "Bathing: " + m ;
                     bg = "info";
                     break;
                 case 3:
-                    msg = "Transporting";
+                    msg = "Transporting: " + m ;
                     bg = "success";
                     break;
             }
@@ -121,8 +121,7 @@
 
         // Submit the info
         $('#tasksubmit').click(function(e) {
-            addTask($('#tasktype').html());
-			console.log($('input[name="title"]').val(""));
+            addTask($('#tasktype').html(), $('input[name="title"]').val(), $('input[name="dateadd"]').val());
 			console.log($('input[name="title"]').val(""));
 			console.log($('input[name="category"]').val(""));
 			console.log($('input[name="description"]').val(""));
