@@ -104,9 +104,6 @@
             li.setAttribute("class", lclass.concat(bg));
             li.appendChild(document.createTextNode(msg));
             ul.appendChild(li);
-
-					  var title = '';
-
         }
 
         // Remove tasks
@@ -125,13 +122,14 @@
         // Submit the info
         $('#tasksubmit').click(function(e) {
             addTask($('#tasktype').html());
-			console.log($('input[name="title"]').val());
-			console.log($('input[name="category"]').val());
-			console.log($('input[name="description"]').val());
-			console.log($('input[name="dateadd"]').val());
-			console.log($('input[name="datestart"]').val());
-			console.log($('input[name="dateend"]').val());
-			console.log($('input[name="notes"]').val());
+			console.log($('input[name="title"]').val(""));
+			console.log($('input[name="title"]').val(""));
+			console.log($('input[name="category"]').val(""));
+			console.log($('input[name="description"]').val(""));
+			console.log($('input[name="dateadd"]').val(""));
+			console.log($('input[name="datestart"]').val(""));
+			console.log($('input[name="dateend"]').val(""));
+			console.log($('input[name="notes"]').val(""));
 			
 			var obj =
 			{			
@@ -143,6 +141,8 @@
 				dateEnd: $('input[name="dateend"]').val(), // TODO replace with duration but what data type/ units?
 				notes: $('input[name="notes"]').val(),
 			}
+			
+			
         });
     </script>
 
