@@ -33,19 +33,19 @@
 																...
 														</div>
 														<label for="title">Title</label>
-														<input type="text" class="form-control" id="title" placeholder="Title">
+														<input type="text" class="form-control" id="title" name="title" placeholder="Title">
 														<label for="category">Category</label>
-														<input type="text" class="form-control" id="category" placeholder="Category">
+														<input type="text" class="form-control" id="category" name="category" placeholder="Category">
 														<label for="description">Description</label>
-														<input type="text" class="form-control" id="description" placeholder="Description">
+														<input type="text" class="form-control" id="description" name="description" placeholder="Description">
 														<label for="dateadd">Date Added</label>
-														<input type="date" class="form-control" id="dateadd" placeholder="Date Added">
+														<input type="date" class="form-control" id="dateadd" name="dateadd" placeholder="Date Added">
 														<label for="datestart">Date Start</label>
-														<input type="date" class="form-control" id="datestart" placeholder="Date Start">
+														<input type="date" class="form-control" id="datestart" name="datestart" placeholder="Date Start">
 														<label for="dateend">Date Ended</label>
-														<input type="date" class="form-control" id="dateend" placeholder="Date Ended">
+														<input type="date" class="form-control" id="dateend" name="dateend" placeholder="Date Ended">
 														<label for="notes">Notes</label>
-														<input type="text" class="form-control" id="notes" placeholder="Notes">
+														<input type="text" class="form-control" id="notes" name="notes" placeholder="Notes">
 												</div>
 										</form>
 										<div class="modal-footer">
@@ -125,6 +125,24 @@
         // Submit the info
         $('#tasksubmit').click(function(e) {
             addTask($('#tasktype').html());
+			console.log($('input[name="title"]').val());
+			console.log($('input[name="category"]').val());
+			console.log($('input[name="description"]').val());
+			console.log($('input[name="dateadd"]').val());
+			console.log($('input[name="datestart"]').val());
+			console.log($('input[name="dateend"]').val());
+			console.log($('input[name="notes"]').val());
+			
+			var obj =
+			{			
+				title: $('input[name="title"]').val(), //required, short text
+				category: $('input[name="category"]').val(),
+				description: $('input[name="description"]').val(), 
+				dateAdded: $('input[name="dateadd"]').val(),
+				dateStart: $('input[name="datestart"]').val(),
+				dateEnd: $('input[name="dateend"]').val(), // TODO replace with duration but what data type/ units?
+				notes: $('input[name="notes"]').val(),
+			}
         });
     </script>
 
